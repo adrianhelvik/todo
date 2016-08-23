@@ -1,0 +1,12 @@
+<div ng-repeat="todo in $ctrl.todos">
+    <p>{{ todo.description }}</p>
+    <p>Due: {{ todo.due | date: 'dd/MM-yyyy' }}</p>
+    <button ng-click="$ctrl.delete(todo)">Delete</button>
+    <hr>
+</div>
+
+<form novalidate ng-submit="$ctrl.submit()">
+    <input ng-model="$ctrl.newTodo.description">
+    <input type="date" ng-model="$ctrl.newTodo.due">
+    <button type="submit">Store todo</button>
+</form>

@@ -1,0 +1,49 @@
+@import 'variables';
+@import 'mixins';
+
+// Sane defaults
+// =============
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+// Traits
+// ======
+
+// %something {
+//     // ...
+// }
+
+// BEM
+// ===
+
+// Site: Sticky footer
+// -------------------
+// source: https://github.com/philipwalton/solved-by-flexbox/blob/master/assets/css/components/site.css
+// and solved-by-flexbox
+
+.Site {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.Site-header,
+.Site-footer {
+    flex: none;
+}
+
+.Site-content {
+    flex: 1 0 auto;
+    width: 100%;
+}
+.Site-content::after {
+    content: '\00a0';
+    display: block;
+    height: 0px;
+    visibility: hidden;
+}

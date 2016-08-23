@@ -1,0 +1,67 @@
+@import 'variables';
+
+@mixin v-margin( $size ) {
+    margin-top: $size;
+    margin-bottom: $size;
+}
+
+@mixin h-margin( $size ) {
+    margin-left: $size;
+    margin-right: $size;
+}
+
+@mixin v-padding( $size ) {
+    padding-top: $size;
+    padding-bottom: $size;
+}
+
+@mixin h-padding( $size ) {
+    padding-left: $size;
+    padding-right: $size;
+}
+
+@mixin v-border($specs) {
+    border-top: $specs;
+    border-bottom: $specs;
+}
+
+@mixin h-border($specs) {
+    border-left: $specs;
+    border-right: $specs;
+}
+
+@mixin below($size) {
+    @if (not map-has-key($breakpoints, $size)) {
+        @error "#{$size} is not in breakpoints";
+    }
+
+    @media only screen and (max-width: map-get($breakpoints, $size) - 1px) {
+        @content;
+    }
+}
+
+@mixin above($size) {
+    @if (not map-has-key($breakpoints, $size)) {
+        @error "#{$size} is not in breakpoints";
+    }
+
+    @media only screen and (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+@mixin between($min, $max) {
+    @if (not map-has-key($breakpoints, $min)) {
+        @error "#{$min} is not in breakpoints";
+    }
+
+    @if (not map-has-key($breakpoints, $max)) {
+        @error "#{$max} is not in breakpoints";
+    }
+
+    @media only screen
+    and (min-width: map-get($breakpoints, $min))
+    and (max-width: (map-get($breakpoints, $max) - 1px)) {
+        @content;
+    }
+}

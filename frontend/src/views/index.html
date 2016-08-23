@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="app" ng-strict-di>
+    <head>
+        <meta charset="utf-8">
+        <title ng-bind-html="title"></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="angular-material.css">
+        <link rel="stylesheet" href="styles.css">
+        <base href="/">
+    </head>
+
+    <body class="Site" ng-cloak>
+
+        <header class="Site-header">
+            header
+        </header>
+
+        <main class="Site-content" ui-view></main>
+
+        <footer class="Site-footer">
+            footer
+        </footer>
+
+        <script src="bundle.js"></script>
+    </body>
+</html>
