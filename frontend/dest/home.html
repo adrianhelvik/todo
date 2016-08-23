@@ -1,13 +1,27 @@
-<div ng-repeat="todo in $ctrl.todos">
-    <p>{{ todo.description }}</p>
-    <p>Due: {{ todo.due | date: 'dd/MM-yyyy' }}</p>
-    <button ng-click="$ctrl.delete(todo)">Delete</button>
-    <button ui-sref="edit({id: todo._id})">
-    <hr>
+<div class="card" ng-repeat="todo in $ctrl.todos">
+    <div class="split-container">
+        <div>
+            <p>{{ todo.description }}</p>
+            <p>Due: {{ todo.due | date: 'dd/MM-yyyy' }}</p>
+        </div>
+        <div>
+            <button class="inline" ui-sref="edit({id: todo._id})">Edit</button>
+            <button class="inline" ng-click="$ctrl.delete(todo)">Delete</button>
+        </div>
+    </div>
 </div>
 
-<form novalidate ng-submit="$ctrl.submit()">
-    <input ng-model="$ctrl.newTodo.description">
-    <input type="date" ng-model="$ctrl.newTodo.due">
+<form class="card" novalidate ng-submit="$ctrl.submit()">
+
+    <div class="input-container">
+        <input ng-model="$ctrl.newTodo.description" id="description">
+        <label for="description">Description</label>
+    </div>
+
+    <div class="input-container">
+        <input type="date" ng-model="$ctrl.newTodo.due" id="due">
+        <label for="due">Due</label>
+    </div>
+
     <button type="submit">Store todo</button>
 </form>

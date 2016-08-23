@@ -83382,17 +83382,19 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var HomeController = function () {
-    HomeController.$inject = ["TodoResource"];
-    function HomeController(TodoResource) {
+    HomeController.$inject = ["TodoResource", "$q"];
+    function HomeController(TodoResource, $q) {
         'ngInject';
 
         _classCallCheck(this, HomeController);
 
         this.resource = TodoResource;
+        this.$q = $q;
+
+        this.todos = [];
+        this.newTodo = {};
 
         this.fetch();
-
-        this.newTodo = {};
     }
 
     _createClass(HomeController, [{
@@ -83407,12 +83409,20 @@ var HomeController = function () {
     }, {
         key: 'submit',
         value: function submit() {
-            this.resource.create(this.newTodo).then(this.fetch.bind(this));
+            var _this2 = this;
+
+            this.resource.create(this.newTodo).then(this.fetch.bind(this)).then(function () {
+                _this2.newTodo = {};
+            });
         }
     }, {
         key: 'delete',
         value: function _delete(todo) {
-            this.resource.destroy(todo._id).then(this.fetch.bind(this));
+            var _this3 = this;
+
+            this.resource.destroy(todo._id).then(function () {
+                _this3.todos.splice(_this3.todos.indexOf(todo), 1);
+            }).then(this.fetch.bind(this));
         }
     }]);
 

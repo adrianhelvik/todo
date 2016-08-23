@@ -10,14 +10,20 @@ require_once './todo-controller.php'
         * {
             font-family: sans-serif;
         }
+        .todo {
+            width: 960px;
+            margin: 30px auto;
+        }
     </style>
 </head>
 <body>
     <?php foreach ($todos as $todo) {?>
-    <div class="todo">
+    <form class="todo" action="/delete.php" method="POST">
+        <input type=hidden value="<?= $todo['id'] ?>">
         <p><?= $todo['description'] ?></p>
         <p><?= $todo['due'] ?></p>
-    </div>
+        <button type="submit">delete</button>
+    </form>
     <?php } ?>
 
     <form method="POST" action="/store.php">

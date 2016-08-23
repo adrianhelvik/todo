@@ -10,8 +10,32 @@ body {
     box-sizing: border-box;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 // Traits
 // ======
+
+%shadow-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+%shadow-2 {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+%shadow-3 {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+%shadow-4 {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+%shadow-5 {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
 
 // %something {
 //     // ...
@@ -39,11 +63,150 @@ body {
 
 .Site-content {
     flex: 1 0 auto;
-    width: 100%;
+    @include h-margin(auto);
+    padding: 15px;
+
+    @include above('large') {
+        width: 960px;
+    }
 }
 .Site-content::after {
     content: '\00a0';
     display: block;
     height: 0px;
     visibility: hidden;
+}
+
+.Site-header {
+    background: lightgray;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    background: $brandColor;
+    > * {
+        line-height: 16px;
+        @include v-margin(10px);
+    }
+    h1 {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 16px;
+    }
+    a {
+        color: black;
+    }
+}
+
+a {
+    color: $brandColor;
+    text-decoration: none;
+    border-bottom: 2px solid black;
+    display: inline-block;
+    font-weight: bold;
+    padding-bottom: 3px;
+    margin-right: 15px;
+
+    transition: all .2s ease;
+
+    &:hover {
+        padding-bottom: 8px;
+        margin-bottom: -5px;
+    }
+}
+
+button {
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    background: $brandColor;
+    padding: 10px;
+    height: $inputHeight;
+    display: block;
+    @include v-margin($defaultMargin);
+
+    &.inline {
+        display: inline-block;
+        &:not(:last-child) {
+            margin-right: $defaultMargin - 4px; // to account for inline-block spacing issue
+        }
+    }
+}
+
+input {
+    line-height: $inputHeight;
+    border: none;
+    background: transparent;
+    border-bottom: 3px solid $brandColor;
+    display: block;
+    @include v-margin($defaultMargin);
+    width: 100%;
+
+    &:focus {
+        outline: none;
+    }
+
+}
+
+hr {
+    border: none;
+    border-bottom: 3px solid $brandColor;
+}
+
+input:not([type="date"]) {
+    + label {
+        position: absolute;
+        top: 16px;
+        transition: all .2s ease;
+        cursor: text;
+    }
+
+    &:focus, &.ng-not-empty {
+        + label {
+            font-size: 10px;
+            top: -5px;
+        }
+    }
+}
+
+input[type="date"] {
+    padding-top: 10px;
+
+    + label {
+        top: 0;
+        position: absolute;
+        font-size: 10px;
+    }
+}
+
+.input-container {
+    position: relative;
+}
+
+.card {
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    transition: left .5s;
+
+    @extend %shadow-1;
+}
+
+.split-container {
+    display: flex;
+    align-items: row;
+    justify-content: space-between;
+}
+
+footer {
+    padding: 15px;
+    background: $brandColor;
+    a {
+        color: black;
+    }
+}
+
+.text-center {
+    text-align: center;
 }
