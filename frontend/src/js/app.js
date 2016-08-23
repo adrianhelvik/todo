@@ -5,7 +5,6 @@ var app = angular.module('app', [
     // Third party
 
     require('angular-ui-router'),
-    require('angular-material'),
 
     // Project
 
