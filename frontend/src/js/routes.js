@@ -15,6 +15,13 @@ angular.module('app').config(($stateProvider, $urlRouterProvider, $locationProvi
             controllerAs: '$ctrl'
         })
 
+        .state('edit', {
+            url: '/edit/id',
+            templateUrl: 'edit.html',
+            controller: 'EditController',
+            controllerAs: '$ctrl'
+        })
+
         ;
 
 });

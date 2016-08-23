@@ -2,6 +2,7 @@
     <p>{{ todo.description }}</p>
     <p>Due: {{ todo.due | date: 'dd/MM-yyyy' }}</p>
     <button ng-click="$ctrl.delete(todo)">Delete</button>
+    <button ui-sref="edit({id: todo._id})">
     <hr>
 </div>
 
