@@ -127,10 +127,15 @@ input[type="date"] {
   position: relative;
   transition: left .5s; }
 
-.split-container {
-  display: flex;
-  align-items: row;
-  justify-content: space-between; }
+@media only screen and (min-width: 750px) {
+  .split-container {
+    display: flex;
+    align-items: row;
+    justify-content: space-between; } }
+
+@media only screen and (max-width: 749px) {
+  .center-text-below-medium {
+    text-align: center; } }
 
 footer {
   padding: 15px;

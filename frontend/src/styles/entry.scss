@@ -198,9 +198,17 @@ input[type="date"] {
 }
 
 .split-container {
-    display: flex;
-    align-items: row;
-    justify-content: space-between;
+    @include above('medium') {
+        display: flex;
+        align-items: row;
+        justify-content: space-between;
+    }
+}
+
+.center-text-below-medium {
+    @include below('medium') {
+        text-align: center;
+    }
 }
 
 footer {
