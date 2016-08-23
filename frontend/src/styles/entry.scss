@@ -69,6 +69,9 @@ body {
     @include above('large') {
         width: 960px;
     }
+    @include below('large') {
+        width: 100%;
+    }
 }
 .Site-content::after {
     content: '\00a0';

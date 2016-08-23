@@ -27,6 +27,9 @@ body {
   @media only screen and (min-width: 1000px) {
     .Site-content {
       width: 960px; } }
+  @media only screen and (max-width: 999px) {
+    .Site-content {
+      width: 100%; } }
 
 .Site-content::after {
   content: '\00a0';
