@@ -68,6 +68,7 @@ a {
     margin-bottom: -5px; }
 
 button {
+  font-size: 14px;
   font-weight: bold;
   color: white;
   border-radius: 5px;
